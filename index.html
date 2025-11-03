@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris Main Menu</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #121212;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #eee;
+      user-select: none;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      margin: 180px 0 5px;
+      font-weight: 700;
+      font-size: 80px;
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4aa;
+    }
+    p {
+      margin: 10px 0 5px;
+      font-weight: 700;
+      font-family: Comic Sans MS, cursive;
+      color: #00bcd4;
+      text-shadow: 0 0 10px #00bcd4aa;
+    }
+    h1, p {
+      animation: changes 2s steps(1, end) infinite, updown 2s steps(1, end) forwards;
+    }
+    #startBtn {
+      margin: 50px 0 5px;
+      padding: 18px 35px;
+      font-size: 20px;
+      background-color: #00bcd4;
+      border: 3px solid #eee;
+      box-shadow: 0 0 10px #eee;
+      color: #eee;
+      font-family: Comic Sans MS, cursive;
+      border-radius: 11px;
+    }
+
+    @keyframes changes {
+      0% {
+        color: #00bcd4;
+      }
+      25% {
+        color: #d40000;
+      }
+      50% {
+        color: #45ff2d;
+      }
+      75% {
+        color: #fffb14;
+      }
+    }
+    @keyframes updown {
+      0% {
+        transform: translateY(-100px);
+      }
+      20% {
+        transform: translateY(-75px);
+      }
+      40% {
+        transform: translateY(-50px);
+      }
+      60% {
+        transform: translateY(-25px);
+      }
+      80% {
+        transform: translateY(0);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <h1>TETRIS</h1>
+  <p>created by : alef</p>
+  <audio id="bgMusic" src="music/ost1.mp3" loop preload="auto"></audio>
+  <button id="startBtn">Start Game</button>
+  <div id="musicStatus"></div>
+  <!-- <script>
+    const bgMusic = document.getElementById('bgMusic');
+    const musicStatus = document.getElementById('musicStatus');
+    const startBtn = document.getElementById('startBtn');
+    function updateMusicStatus(text) {
+      musicStatus.textContent = text;
+    }
+    function tryPlayMusic() {
+      bgMusic.volume = 0.3;
+      bgMusic.play().then(() => {
+        updateMusicStatus('🎵 Music is playing.');
+      }).catch(e => {
+        updateMusicStatus('🔇 Autoplay prevented. Tap anywhere to start music.');
+        console.warn('Autoplay prevented:', e);
+      });
+    }
+    // Try playing the music on load
+    window.addEventListener('load', () => {
+      tryPlayMusic();
+    });
+    // Add a user interaction fallback to start music if autoplay is blocked
+    function userInteractionHandler() {
+      tryPlayMusic();
+      document.body.removeEventListener('click', userInteractionHandler);
+      document.body.removeEventListener('touchstart', userInteractionHandler);
+    }
+    document.body.addEventListener('click', userInteractionHandler);
+    document.body.addEventListener('touchstart', userInteractionHandler);
+    // Start button leads to next page (adjust to your actual game page)
+    startBtn.addEventListener('click', () => {
+      window.location.href = 'play.html'; // Change to your actual game page URL
+    });
+  </script> -->
+  <script src="script.js"></script>
+</body>
+</html>
